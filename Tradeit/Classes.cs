@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using SkinsExchangers.Extensions;
 using SkinsExchangers.TradeitGG.Models;
@@ -12,6 +13,14 @@ namespace SkinsExchangers.TradeitGG.Classes
     public class Inventory
     {
         public List<InventoryBot> InventoryItems { get; private set; } = new();
+
+        internal Inventory() { }
+        [JsonConstructor]
+        public Inventory(List<InventoryBot> InventoryItems)
+        {
+            this.InventoryItems = InventoryItems;
+        }
+
         public static async Task<Inventory> Load(SessionData Session, Enums.GAMES Game, string url_base = "https://inventory.tradeit.gg/sinv", IWebProxy proxy = null)
         {
             string url = $"{url_base}/{Game.ToInt32()}";

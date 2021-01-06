@@ -2,6 +2,7 @@
 using AngleSharp.Html.Parser;
 using System;
 using System.Net;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SkinsExchangers.TradeitGG.Models
@@ -10,6 +11,13 @@ namespace SkinsExchangers.TradeitGG.Models
     {
         public string __cfduid { get; set; }
         public string sessionid { get; set; }
+        private SessionData() { }
+        [JsonConstructor]
+        public SessionData(string __cfduid, string sessionid)
+        {
+            this.__cfduid = __cfduid;
+            this.sessionid = sessionid;
+        }
         public static async Task<SessionData> AuthAsync(SteamAuth.SessionData Session, IWebProxy Proxy)
         {
             if (Session == null) return null;
@@ -64,6 +72,7 @@ namespace SkinsExchangers.TradeitGG.Models
         public ulong SteamID64 { get; private set; } = 0;
         public ulong SteamID { get; private set; } = 0;
         public int Token { get; private set; } = 0;
+        [JsonConstructor]
         public TradeOffer(bool Success = false, string SteamID64 = "0", string SteamID = "0", int Token = 0)
         {
             this.Success = Success;
@@ -76,21 +85,38 @@ namespace SkinsExchangers.TradeitGG.Models
     {
         public bool success { get; set; } = false;
         public string error { get; set; } = "None";
+        internal BuyItem() { }
+        [JsonConstructor]
+        public BuyItem(bool success, string error)
+        {
+            this.success = success;
+            this.error = error;
+        }
     }
     public record WithdrawItem
     {
         public bool success { get; set; } = false;
         public string error { get; set; } = "None";
         public string token { get; set; } = "";
+        internal WithdrawItem() { }
+        [JsonConstructor]
+        public WithdrawItem(bool success, string error, string token)
+        {
+            this.success = success;
+            this.error = error;
+            this.token = token;
+        }
     }
     internal record TradeItemSale
     {
         public string token;
         public int price;
+        [JsonConstructor]
         public TradeItemSale(string token, int price)
         {
             this.token = token;
             this.price = price;
         }
+        internal TradeItemSale() { }
     }
 }

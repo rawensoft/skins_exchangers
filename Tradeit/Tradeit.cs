@@ -395,7 +395,7 @@ namespace SkinsExchangers.TradeitGG
             if (!LoggedIn) return new TradeOffer(); //если не выполнен вход
             else if (string.IsNullOrEmpty(TradeURL)) return new TradeOffer(); //если не указан TradeURL
             else if (your_skin.skins.Count - 1 > index_of_your_skin) return new TradeOffer(); //если ArgumentOutOfIndex
-            else if (!your_skin.price.HasValue || your_skin.price == 0) return new TradeOffer(); // если нет цены на ваш скин
+            else if (!your_skin.Price.HasValue || your_skin.Price == 0) return new TradeOffer(); // если нет цены на ваш скин
             if (trade_skin != null)
             {
                 if (trade_skin.skins.Count - 1 > index_of_trade_skin) return new TradeOffer(); //если ArgumentOutOfIndex
@@ -406,7 +406,7 @@ namespace SkinsExchangers.TradeitGG
             var g_int32 = Game.ToInt32();
             string s_hash_name = trade_skin != null ? System.Web.HttpUtility.UrlEncode(trade_skin.market_hash_name) : null;
             string c_hash_name = System.Web.HttpUtility.UrlEncode(your_skin.market_hash_name);
-            int cprice = your_skin.price.Value;
+            int cprice = your_skin.Price.Value;
             int sprice = trade_skin != null ? trade_skin.skins[index_of_trade_skin].price.Value : 0;
             int bot_id = trade_skin != null ? trade_skin.bot : bot;
 
@@ -541,7 +541,7 @@ namespace SkinsExchangers.TradeitGG
                                 quility = item0.quility,
                                 skins = item0.skins,
                                 static_url = item0.static_url,
-                                price = item0.price,
+                                Price = item0.Price,
                                 ws = item0.ws,
                                 x = item0.x
                             };
