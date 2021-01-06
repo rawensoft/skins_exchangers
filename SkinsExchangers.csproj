@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>false</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="H.Engine.IO">
+      <HintPath>..\..\Скачанные\H.Socket.IO-e5493850deb128d75bb42cd9d78466a2e0d87318\src\libs\H.Engine.IO\bin\Debug\net4.5\H.Engine.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="H.WebSockets">
+      <HintPath>..\..\Скачанные\H.Socket.IO-e5493850deb128d75bb42cd9d78466a2e0d87318\src\libs\H.Engine.IO\bin\Debug\net4.5\H.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Скачанные\H.Socket.IO-e5493850deb128d75bb42cd9d78466a2e0d87318\src\libs\H.Engine.IO\bin\Debug\net4.5\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SteamAuth [Net.Core]">
+      <HintPath>..\..\Скачанные\SteamAuth [Net.Core]\bin\Debug\net5.0\SteamAuth [Net.Core].dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
